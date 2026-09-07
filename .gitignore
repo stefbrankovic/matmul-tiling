@@ -1,0 +1,10 @@
+build/
+build-*/
+*.o
+*.so
+results/*.raw
+results/perf_raw.txt
+.venv/
+__pycache__/
+.DS_Store
+compile_commands.json
