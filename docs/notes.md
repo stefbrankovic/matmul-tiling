@@ -23,8 +23,8 @@ peak = takt_GHz x jezgra x FLOP/ciklus
      = 1.20 x 2 x 2 = **4.8 GFLOPS**
    (skalarni double bez SIMD-a: ~2 FLOP/ciklus/jezgro)
 ```
-**Izmerena propusnost (STREAM triad):** ______ GB/s
-**Ridge point** (peak/bandwidth): ______ FLOP/bajt
+**Izmerena propusnost (STREAM triad):** 10.79 GB/s
+**Ridge point** (peak GFLOPS/bandwidth): 0.44 FLOP/bajt
 
 ---
 
@@ -47,22 +47,25 @@ Predvidjanje: **BS = 32**
 Ocekivano dodatno ubrzanje: 1.5-2x
 
 ### 1.4. Skaliranje na T niti
-Ocekivano: ______x na ______ jezgara. Zasto ne linearno: ______
+Ocekivano: 1.3-1.6x na 2 jezgara. Zasto ne linearno: 
+>Jezgra dele L3 keš i memorijsku magistralu ka DRAM-u, pa se stvara usko grlo pri pristupu memoriji.
 
 ### 1.5. Jaz do OpenBLAS-a (jednonitno!)
-Ocekivano: ______x sporije od BLAS-a
+Ocekivano: 2-4x sporije od BLAS-a
 
 ---
 
 ## 2. Izmereno
 
+Referenca (naive baseline na N=1024): 0.376 GFLOPS (vreme: 5718 ms)
+
 | Faza | Ocekivano | Izmereno | Razlika i objasnjenje |
 |---|---|---|---|
-| ikj vs naive | | | |
-| tiled vs ikj | | | |
-| optimalni BS | | | |
-| parallel (T niti) | | | |
-| jaz do BLAS-a (1 nit) | | | |
+| ikj vs naive | 3-5x | | |
+| tiled vs ikj | 1.5-2x | | |
+| optimalni BS | BS=32 | | |
+| parallel (T niti) | 1.3-1.6x | | |
+| jaz do BLAS-a (1 nit) | 2-4x sporije | | |
 | -O3 -march=native | | | |
 
 ---
